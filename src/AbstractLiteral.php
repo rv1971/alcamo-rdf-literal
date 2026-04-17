@@ -94,7 +94,8 @@ abstract class AbstractLiteral implements LiteralInterface
 
     public function getDigest(): string
     {
-        return $this->value_;
+        /* This calls __toString(). */
+        return $this;
     }
 
     public function equals(LiteralInterface $literal): bool
