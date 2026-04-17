@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+use alcamo\rdf_literal\LiteralFactory;
+
+include $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
+
+$factory = new LiteralFactory();
+
+$number = $factory->create(1970);
+
+echo $number . PHP_EOL;
+
+echo $number->getDatatypeUri() . PHP_EOL;
+
+$year = $factory->create(1970, LiteralFactory::XSD_NS . 'gYear');
+
+echo $year . PHP_EOL;
+
+echo $year->getDatatypeUri() . PHP_EOL;
+
+echo "Literals are "
+    . ($year->equals($number) ? '' : 'not')
+    . ' equal' . PHP_EOL;
