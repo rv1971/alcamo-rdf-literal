@@ -7,8 +7,10 @@ namespace alcamo\rdf_literal;
  *
  * @date Last reviewed 2026-02-05
  */
-class LanguageLiteral extends StringLiteral
+class LanguageLiteral extends AbstractLiteral
 {
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'string';
+
     public const DEFAULT_DATATYPE_URI = self::XSD_NS . 'language';
 
     /*
