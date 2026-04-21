@@ -42,8 +42,8 @@
       name='PositiveGYear'
       xml:id='PositiveGYear'
       rdfs:label="Positive year">
-    <restriction base='xsd:gYear'>
-      <minInclusive value='1'/>
-    </restriction>
+    <xsd:restriction base='xsd:gYear'>
+      <xsd:minInclusive value='1'/>
+    </xsd:restriction>
   </xsd:simpleType>
 </xsd:schema>
