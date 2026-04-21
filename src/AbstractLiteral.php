@@ -38,10 +38,10 @@ abstract class AbstractLiteral implements LiteralInterface
     /// Return static::DEFAULT_DATATYPE_URI as an Uri object
     public static function getClassDefaultDatatypeUri(): UriInterface
     {
-        static $uris = [];
+        static $classToUri = [];
 
-        return $uris[static::class]
-        ?? ($uris[static::class] = new Uri(static::DEFAULT_DATATYPE_URI));
+        return $classToUri[static::class]
+        ?? ($classToUri[static::class] = new Uri(static::DEFAULT_DATATYPE_URI));
     }
 
     protected $value_;

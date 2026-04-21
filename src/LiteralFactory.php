@@ -10,38 +10,52 @@ namespace alcamo\rdf_literal;
 class LiteralFactory implements LiteralFactoryInterface
 {
     /**
-     * @brief Mapping of RDF data type IRIs to classes
+     * @brief Literal classes to consider
      *
-     * This mapping includes all primitive types and all builtin types dnot
-     * derived from `string`. The types derived from `string` do not need to
-     * be mentioned because StringLiteral is the fallback literal type anyway.
+     * When the create() method is given an URI which correponds to
+     * getClassDefaultDatatypeUri() for one of these classes, a literal of
+     * this class will be created.
+     */
+    public const LITERAL_CLASSES = [
+        AnyUriLiteral::class,
+        Base64BinaryLiteral::class,
+        BitsStringLiteral::class,
+        BooleanLiteral::class,
+        DateLiteral::class,
+        DateTimeLiteral::class,
+        DecimalLiteral::class,
+        DigitsStringLiteral::class,
+        DoubleLiteral::class,
+        DurationLiteral::class,
+        FloatLiteral::class,
+        FourBitStringLiteral::class,
+        GDayLiteral::class,
+        GMonthDayLiteral::class,
+        GMonthLiteral::class,
+        GYearLiteral::class,
+        GYearMonthLiteral::class,
+        HexBinaryLiteral::class,
+        IntegerLiteral::class,
+        LanguageLiteral::class,
+        NonNegativeIntegerLiteral::class,
+        NotationLiteral::class,
+        PositiveGYearLiteral::class,
+        QNameLiteral::class,
+        StringLiteral::class,
+        TimeLiteral::class
+    ];
+
+    /**
+     * @brief Additional mappings of RDF data type IRIs to classes
+     *
+     * This mapping is necessary because the present factory has no knowledge
+     * about XML Schema types derived from other types.
+     *
+     * This mapping includes all non-primitive builtin types not derived from
+     * `string`. The types derived from `string` do not need to be mentioned
+     * because StringLiteral is the fallback literal type anyway.
      */
     public const DATATYPE_URI_TO_CLASS = [
-        AnyUriLiteral::DEFAULT_DATATYPE_URI       => AnyUriLiteral::class,
-        Base64BinaryLiteral::DEFAULT_DATATYPE_URI => Base64BinaryLiteral::class,
-        BooleanLiteral::DEFAULT_DATATYPE_URI      => BooleanLiteral::class,
-        DateLiteral::DEFAULT_DATATYPE_URI         => DateLiteral::class,
-        DateTimeLiteral::DEFAULT_DATATYPE_URI     => DateTimeLiteral::class,
-        DecimalLiteral::DEFAULT_DATATYPE_URI      => DecimalLiteral::class,
-        DoubleLiteral::DEFAULT_DATATYPE_URI       => DoubleLiteral::class,
-        DurationLiteral::DEFAULT_DATATYPE_URI     => DurationLiteral::class,
-        FloatLiteral::DEFAULT_DATATYPE_URI        => FloatLiteral::class,
-        GDayLiteral::DEFAULT_DATATYPE_URI         => GDayLiteral::class,
-        GMonthDayLiteral::DEFAULT_DATATYPE_URI    => GMonthDayLiteral::class,
-        GMonthLiteral::DEFAULT_DATATYPE_URI        => GMonthLiteral::class,
-        GYearLiteral::DEFAULT_DATATYPE_URI        => GYearLiteral::class,
-        GYearMonthLiteral::DEFAULT_DATATYPE_URI   => GYearMonthLiteral::class,
-        HexBinaryLiteral::DEFAULT_DATATYPE_URI    => HexBinaryLiteral::class,
-        IntegerLiteral::DEFAULT_DATATYPE_URI      => IntegerLiteral::class,
-        LanguageLiteral::DEFAULT_DATATYPE_URI     => LanguageLiteral::class,
-        MediaTypeLiteral::DEFAULT_DATATYPE_URI    => MediaTypeLiteral::class,
-        NonNegativeIntegerLiteral::DEFAULT_DATATYPE_URI
-            => NonNegativeIntegerLiteral::class,
-        NotationLiteral::DEFAULT_DATATYPE_URI     => NotationLiteral::class,
-        QNameLiteral::DEFAULT_DATATYPE_URI        => QNameLiteral::class,
-        StringLiteral::DEFAULT_DATATYPE_URI       => StringLiteral::class,
-        TimeLiteral::DEFAULT_DATATYPE_URI         => TimeLiteral::class,
-
         self::XSD_NS . 'byte'               => IntegerLiteral::class,
         self::XSD_NS . 'int'                => IntegerLiteral::class,
         self::XSD_NS . 'long'               => IntegerLiteral::class,
@@ -54,6 +68,25 @@ class LiteralFactory implements LiteralFactoryInterface
         self::XSD_NS . 'unsignedLong'       => NonNegativeIntegerLiteral::class,
         self::XSD_NS . 'unsignedShort'      => NonNegativeIntegerLiteral::class
     ];
+
+    public static function getDatatypeUriToClass(): array
+    {
+        static $classToMap = [];
+
+        if (!isset($classToMap[static::class])) {
+            $map = static::DATATYPE_URI_TO_CLASS;
+
+            foreach (static::LITERAL_CLASSES as $class) {
+                $method = "$class::getClassDefaultDatatypeUri";
+
+                $map[(string)$method()] = $class;
+            }
+
+            $classToMap[static::class] = $map;
+        }
+
+        return $classToMap[static::class];
+    }
 
     /**
      * @param $value stringable
@@ -71,10 +104,12 @@ class LiteralFactory implements LiteralFactoryInterface
         $datatypeUri = null,
         $lang = null
     ): LiteralInterface {
+        $datatypeUriToClass = static::getDatatypeUriToClass();
+
         switch (true) {
             case isset($datatypeUri)
-                && isset(static::DATATYPE_URI_TO_CLASS[(string)$datatypeUri]):
-                $class = static::DATATYPE_URI_TO_CLASS[(string)$datatypeUri];
+                && isset($datatypeUriToClass[(string)$datatypeUri]):
+                $class = $datatypeUriToClass[(string)$datatypeUri];
 
                 return new $class($value, $datatypeUri);
 

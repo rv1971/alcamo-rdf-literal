@@ -295,41 +295,41 @@ class LiteralFactoryTest extends TestCase
             ],
             [
                 1913,
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
-                GYearLiteral::class,
+                PositiveGYearLiteral::class,
                 new \DateTime('1913-10-11'),
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '1913',
                 '1913'
             ],
             [
                 313,
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
-                GYearLiteral::class,
+                PositiveGYearLiteral::class,
                 new \DateTime('0313-02-13'),
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '0313',
                 '0313'
             ],
             [
                 '1918+01:00',
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
-                GYearLiteral::class,
+                PositiveGYearLiteral::class,
                 new \DateTime('1918-02-24+01:00'),
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '1918',
                 '1918'
             ],
             [
                 '856',
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
-                GYearLiteral::class,
+                PositiveGYearLiteral::class,
                 new \DateTime('0856-02-04'),
-                GYearLiteral::DEFAULT_DATATYPE_URI,
+                (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '0856',
                 '0856'
             ],
@@ -604,6 +604,36 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'anyURI',
                 'http://www.example.edu',
                 'http://www.example.edu'
+            ],
+            [
+                '1234=567<89>',
+                (string)FourBitStringLiteral::getClassDefaultDatatypeUri(),
+                null,
+                FourBitStringLiteral::class,
+                '1234=567<89>',
+                (string)FourBitStringLiteral::getClassDefaultDatatypeUri(),
+                '1234=567<89>',
+                '1234=567<89>'
+            ],
+            [
+                '00742',
+                (string)DigitsStringLiteral::getClassDefaultDatatypeUri(),
+                null,
+                DigitsStringLiteral::class,
+                '00742',
+                (string)DigitsStringLiteral::getClassDefaultDatatypeUri(),
+                '00742',
+                '00742'
+            ],
+            [
+                '0011',
+                (string)BitsStringLiteral::getClassDefaultDatatypeUri(),
+                null,
+                BitsStringLiteral::class,
+                '0011',
+                (string)BitsStringLiteral::getClassDefaultDatatypeUri(),
+                '0011',
+                '0011'
             ]
         ];
     }
