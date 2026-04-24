@@ -5,18 +5,18 @@ namespace alcamo\rdf_literal;
 use alcamo\exception\SyntaxError;
 
 /**
- * @brief RDF digits string literal
+ * @brief RDF digit string literal
  *
- * A digits string is a string made of digits. It differs from a nonnegative
+ * A digit string is a string made of digits. It differs from a nonnegative
  * integer by the fact that it can be of arbitrary length and that leading
  * zeros make a difference, i.e. the numeric string `007` is different from
  * `7`.
  *
  * @date Last reviewed 2026-04-17
  */
-class DigitsStringLiteral extends FourBitStringLiteral
+class DigitStringLiteral extends FourBitCharStringLiteral
 {
-    public const DEFAULT_DATATYPE_LOCAL_NAME = 'DigitsString';
+    public const DEFAULT_DATATYPE_LOCAL_NAME = 'DigitString';
 
     public const DEFAULT_DATATYPE_XNAME =
         self::ALCAMO_RDF_NS . ' ' . self::DEFAULT_DATATYPE_LOCAL_NAME;

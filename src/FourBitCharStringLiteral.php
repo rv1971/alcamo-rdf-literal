@@ -12,12 +12,12 @@ use alcamo\exception\SyntaxError;
  *
  * @date Last reviewed 2026-04-17
  */
-class FourBitStringLiteral extends StringLiteral
+class FourBitCharStringLiteral extends StringLiteral
 {
     use CustomTypeLiteralTrait;
 
     /// Local name of the default datatype
-    public const DEFAULT_DATATYPE_LOCAL_NAME = 'FourBitString';
+    public const DEFAULT_DATATYPE_LOCAL_NAME = 'FourBitCharString';
 
     /// Extended name of the default datatype
     public const DEFAULT_DATATYPE_XNAME =
@@ -27,21 +27,6 @@ class FourBitStringLiteral extends StringLiteral
     public const XSD_FILENAME = __DIR__ . DIRECTORY_SEPARATOR
         . '..' . DIRECTORY_SEPARATOR
         . 'xsd' . DIRECTORY_SEPARATOR . 'alcamo.rdf.xsd';
-
-    /// Create from equivalent hexadecimal string
-    public static function newFromHex(string $value, $datatypeUri = null): self
-    {
-        return new static(
-            strtr($value, 'ABCDEFabcdef', ':;<=>?:;<=>?'),
-            $datatypeUri
-        );
-    }
-
-    /// Equivalent hexadecimal string
-    public function toHex(): string
-    {
-        return strtr($this->value_, ':;<=>?', 'ABCDEF');
-    }
 
     protected function validateValue(): void
     {

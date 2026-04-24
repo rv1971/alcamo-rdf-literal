@@ -18,10 +18,10 @@ class AbstractLiteralTest extends TestCase
 
     public function equalityProvider(): array
     {
-        $literal1 = new DigitsStringLiteral('111');
+        $literal1 = new DigitStringLiteral('111');
 
-        $literal2 = new DigitsStringLiteral('222');
-        $literal3 = new FourbitStringLiteral('222');
+        $literal2 = new DigitStringLiteral('222');
+        $literal3 = new FourBitCharStringLiteral('222');
         $literal4 = new StringLiteral('222');
         $literal5 = new LangStringLiteral('222');
         $literal5a = new LangStringLiteral('222', 'ar');

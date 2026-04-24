@@ -5,7 +5,7 @@ namespace alcamo\rdf_literal;
 use alcamo\exception\SyntaxError;
 use PHPUnit\Framework\TestCase;
 
-class BitsStringLiteralTest extends TestCase
+class BitStringLiteralTest extends TestCase
 {
     public function testException1(): void
     {
@@ -15,7 +15,7 @@ class BitsStringLiteralTest extends TestCase
             '"012" contains characters other than 0 and 1'
         );
 
-        new BitsStringLiteral('012');
+        new BitStringLiteral('012');
     }
 
     public function testException2(): void
@@ -26,6 +26,6 @@ class BitsStringLiteralTest extends TestCase
             '"-1" contains characters other than 0 and 1'
         );
 
-        new BitsStringLiteral(-1);
+        new BitStringLiteral(-1);
     }
 }

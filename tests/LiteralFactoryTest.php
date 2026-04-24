@@ -607,31 +607,31 @@ class LiteralFactoryTest extends TestCase
             ],
             [
                 '1234=567<89>',
-                (string)FourBitStringLiteral::getClassDefaultDatatypeUri(),
+                (string)FourBitCharStringLiteral::getClassDefaultDatatypeUri(),
                 null,
-                FourBitStringLiteral::class,
+                FourBitCharStringLiteral::class,
                 '1234=567<89>',
-                (string)FourBitStringLiteral::getClassDefaultDatatypeUri(),
+                (string)FourBitCharStringLiteral::getClassDefaultDatatypeUri(),
                 '1234=567<89>',
                 '1234=567<89>'
             ],
             [
                 '00742',
-                (string)DigitsStringLiteral::getClassDefaultDatatypeUri(),
+                (string)DigitStringLiteral::getClassDefaultDatatypeUri(),
                 null,
-                DigitsStringLiteral::class,
+                DigitStringLiteral::class,
                 '00742',
-                (string)DigitsStringLiteral::getClassDefaultDatatypeUri(),
+                (string)DigitStringLiteral::getClassDefaultDatatypeUri(),
                 '00742',
                 '00742'
             ],
             [
                 '0011',
-                (string)BitsStringLiteral::getClassDefaultDatatypeUri(),
+                (string)BitStringLiteral::getClassDefaultDatatypeUri(),
                 null,
-                BitsStringLiteral::class,
+                BitStringLiteral::class,
                 '0011',
-                (string)BitsStringLiteral::getClassDefaultDatatypeUri(),
+                (string)BitStringLiteral::getClassDefaultDatatypeUri(),
                 '0011',
                 '0011'
             ]

@@ -9,11 +9,11 @@
     dc:title="Simple types for the alcamo-rdf-literal package"
     dc:creator="RV1971 &lt;rv1971@web.de&gt;"
     dc:created="2026-04-17"
-    dc:modified="2026-04-21"
+    dc:modified="2026-04-24"
     xml:lang="en">
   <xsd:simpleType
-      name="FourBitString"
-      xml:id="FourBitString"
+      name="FourBitCharString"
+      xml:id="FourBitCharString"
       rdfs:label="String made of four-bit characters">
     <xsd:restriction base="xsd:string">
       <xsd:pattern value="[0-?]*"/>
@@ -21,19 +21,19 @@
   </xsd:simpleType>
 
   <xsd:simpleType
-      name="DigitsString"
-      xml:id="DigitsString"
+      name="DigitString"
+      xml:id="DigitString"
       rdfs:label="String made of decimal digits">
-    <xsd:restriction base="FourBitString">
+    <xsd:restriction base="FourBitCharString">
       <xsd:pattern value="\d*"/>
     </xsd:restriction>
   </xsd:simpleType>
 
   <xsd:simpleType
-      name="BitsString"
-      xml:id="BitsString"
+      name="BitString"
+      xml:id="BitString"
       rdfs:label="String made of the digits 0 and 1">
-    <xsd:restriction base="DigitsString">
+    <xsd:restriction base="DigitString">
       <xsd:pattern value="[01]*"/>
     </xsd:restriction>
   </xsd:simpleType>
