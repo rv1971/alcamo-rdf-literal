@@ -46,6 +46,101 @@ class Lang
         return new self(\Locale::parseLocale(setlocale(LC_ALL, 0)));
     }
 
+    /**
+     * @brief Find the first item that is a best match for the desired
+     * language, if any
+     *
+     * @parm $items iterable of objects that might implement
+     * HavingLangInterface. If an object does, its language is obtaned from
+     * its getLang() method, otherwise it is considered to be
+     * language-agnostic.
+     *
+     * @param Lang|string|null $lang desired language. If '-' (and hence not a
+     * valid language tag), the first language-agnostic item (if any) is
+     * returned.
+     *
+     * @param $disableFallback Do not return a statement with a different
+     * primary language subtag as a fallback. Language-agnostic statements or
+     * statements with the same primary language subtag can always be returned
+     * as fallbacks.
+     */
+    public static function findBestMatch(
+        iterable $items,
+        $lang = null,
+        ?bool $disableFallback = null
+    ) {
+        $bestMatch = null;
+        $bestMatchLevel = -2; /* Any allowed match will be better than this. */
+        $firstItem = null;
+
+        foreach ($items as $item) {
+            if (!isset($firstItem)) {
+                $firstItem = $item;
+
+                /** Return the first item if $lang is `null` or the empty
+                 *  string. */
+                if (!isset($lang) || $lang == '') {
+                    return $firstItem;
+                }
+            }
+
+            $itemLang = $item instanceof HavingLangInterface
+                ? $item->getLang()
+                : null;
+
+            /* When looking for a language-agnostic item:
+             * - If a language-agnostic item is found, return it immediately.
+             * - Otherwise, save it as the best match found so far, with a
+             *   match level of -1 so that it is chosen only if fallback is
+             *   allowed. */
+            if ($lang == '-') {
+                if (!isset($itemLang)) {
+                    return $item;
+                } else {
+                    if (!isset($bestMatch)) {
+                        $bestMatch = $item;
+                    }
+
+                    continue;
+                }
+            }
+
+            /* When a language-agnostic item is found, save it as a best match
+             * of level 0 if no better match has been found so far, so that it
+             * can be chosen also if fallback is disabled. */
+            if (!isset($itemLang)) {
+                if ($bestMatchLevel < 0) {
+                    $bestMatch = $item;
+                    $bestMatchLevel = 0;
+                }
+
+                continue;
+            }
+
+            /* If a perfect match is found, return it immediately. */
+            if ($itemLang == $lang) {
+                return $item;
+            }
+
+            /* Otherwise, save the current item if is better than the
+             * best match found so far. */
+            $matchLevel = $itemLang->countCommonSubtags($lang);
+
+            if ($matchLevel > $bestMatchLevel) {
+                $bestMatch = $item;
+                $bestMatchLevel = $matchLevel;
+            }
+        }
+
+        /* Return the best match if its level is as least zero or if fallback
+         * is allowed. Otherwise return 0. In particular, if $items is the
+         * empty collection, return `null` which is the start value for the
+         * best match. */
+        return ($bestMatchLevel >= 0 || !$disableFallback)
+            ? $bestMatch
+            : null;
+    }
+
     private function __construct(array $subtags)
     {
         $this->subtags_ = $subtags;

@@ -115,7 +115,7 @@ class ConstructedLiteral extends AbstractLiteral implements
      *
      * The values of two constructed literals are considered equal if they
      * have the same number of items and corresponding items are considered
-     * equal.
+     * equal. The keys of the items are considered irrelevant.
      */
     public function equals(LiteralInterface $literal): bool
     {

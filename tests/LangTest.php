@@ -4,6 +4,28 @@ namespace alcamo\rdf_literal;
 
 use PHPUnit\Framework\TestCase;
 
+class LangObject implements HavingLangInterface
+{
+    private $lang_;
+
+    public function __construct($lang = null)
+    {
+        if (isset($lang)) {
+            $this->lang_ = Lang::newFromString($lang);
+        }
+    }
+
+    public function __toString(): string
+    {
+        return $this->lang_ ?? '--';
+    }
+
+    public function getLang(): ?Lang
+    {
+        return $this->lang_;
+    }
+}
+
 class LangTest extends TestCase
 {
     /**
@@ -169,6 +191,67 @@ class LangTest extends TestCase
             [ 'kk-Cyrl-CN', 'kk-CN', 2 ],
             [ 'kk-Cyrl-CN-x-foo', 'kk-x-foo', 2 ],
             [ 'kk-Cyrl-CN-x-foo', 'kk-CN-x-foo', 3 ]
+        ];
+    }
+
+    /**
+     * @dataProvider findBestMatchProvider
+     */
+    public function testFindBestMatch(
+        $items,
+        $lang,
+        $disableFallback,
+        $expectedLang
+    ): void {
+        $objects = [];
+
+        foreach ($items as $item) {
+            switch (true) {
+                case !isset($item):
+                    $objects[] = 'no-lang';
+                    break;
+
+                case $item == '':
+                    $objects[] = new LangObject();
+                    break;
+
+                default:
+                    $objects[] = new LangObject($item);
+            }
+        }
+
+        $this->assertSame(
+            $expectedLang,
+            (string)Lang::findBestMatch($objects, $lang, $disableFallback)
+        );
+    }
+
+    public function findBestMatchProvider(): array
+    {
+        return [
+            [ [], null, null, '' ],
+            [ [], null, true, '' ],
+            [ [], '-', null, '' ],
+            [ [], '-', true, '' ],
+            [ [], 'jp', null, '' ],
+            [ [], 'jp', true, '' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], null, null, 'es-CO' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], null, true, 'es-CO' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], '-', null, 'no-lang' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], '-', true, 'no-lang' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'es-VE', null, 'es-VE' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'es-VE', true, 'es-VE' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'es-ES', null, 'es-CO' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'es-ES', true, 'es-CO' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'es', null, 'es-CO' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'es', true, 'es-CO' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'pt', null, 'no-lang' ],
+            [ [ 'es-CO', null, '', 'es-VE' ], 'pt', true, 'no-lang' ],
+            [ [ 'es-CO', '', null, 'es-VE' ], '-', null, '--' ],
+            [ [ 'es-CO', 'es-VE' ], '-', null, 'es-CO' ],
+            [ [ 'es-CO', 'es-VE' ], '-', true, '' ],
+            [ [ 'es-CO', 'es-VE' ], 'pt', null, 'es-CO' ],
+            [ [ 'es-CO', 'es-VE' ], 'pt', true, '' ]
         ];
     }
 }

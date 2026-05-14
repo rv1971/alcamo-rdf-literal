@@ -14,7 +14,8 @@ class LiteralFactory implements LiteralFactoryInterface
      *
      * When the create() method is given an URI which correponds to
      * getClassDefaultDatatypeUri() for one of these classes, a literal of
-     * this class will be created.
+     * this class will be created. The StringLiteral class does not appear
+     * because it is the fallback class anyway.
      */
     public const LITERAL_CLASSES = [
         AnyUriLiteral::class,
