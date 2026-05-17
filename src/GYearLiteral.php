@@ -24,12 +24,12 @@ class GYearLiteral extends DateTimeLiteral implements ConvertibleToIntInterface
     public function __construct($value = null, $datatypeUri = null)
     {
         switch (true) {
-            case $value instanceof \DateTime:
+            case $value instanceof \DateTimeInterface:
                 parent::__construct($value, $datatypeUri);
                 break;
 
             case !isset($value) || $value === '':
-                parent::__construct(new \DateTime(), $datatypeUri);
+                parent::__construct(new \DateTimeImmutable(), $datatypeUri);
                 return;
 
             case is_int($value):
@@ -58,10 +58,20 @@ class GYearLiteral extends DateTimeLiteral implements ConvertibleToIntInterface
                 );
 
                 if (isset($sign)) {
+                    $dateTime = \DateTime::createFromFormat(
+                        ctype_digit($value) ? 'Y' : 'Ye',
+                        $value
+                    );
+
                     $dateTime->setDate(
                         -$dateTime->format('Y'),
                         $dateTime->format('m'),
                         $dateTime->format('d')
+                    );
+                } else {
+                    $dateTime = \DateTimeImmutable::createFromFormat(
+                        ctype_digit($value) ? 'Y' : 'Ye',
+                        $value
                     );
                 }
 

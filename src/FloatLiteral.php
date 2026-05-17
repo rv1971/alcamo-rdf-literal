@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF float floating point number literal
  *
+ * @invariant getValue() returns a float.
+ *
  * @date Last reviewed 2026-02-05
  */
 class FloatLiteral extends AbstractLiteral

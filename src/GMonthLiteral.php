@@ -25,24 +25,24 @@ class GMonthLiteral extends DateTimeLiteral implements
     public function __construct($value = null, $datatypeUri = null)
     {
         switch (true) {
-            case $value instanceof \DateTime:
+            case $value instanceof \DateTimeInterface:
                 parent::__construct($value, $datatypeUri);
                 break;
 
             case !isset($value) || $value === '':
-                parent::__construct(new \DateTime(), $datatypeUri);
+                parent::__construct(new \DateTimeImmutable(), $datatypeUri);
                 break;
 
             case is_int($value):
                 parent::__construct(
-                    \DateTime::createFromFormat('m', $value),
+                    \DateTimeImmutable::createFromFormat('m', $value),
                     $datatypeUri
                 );
                 break;
 
             default:
                 parent::__construct(
-                    \DateTime::createFromFormat(
+                    \DateTimeImmutable::createFromFormat(
                         ctype_digit($value) ? 'm' : 'me',
                         $value
                     ),

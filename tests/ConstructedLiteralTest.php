@@ -19,6 +19,16 @@ class ConstructedLiteralTest extends TestCase
         $this->assertSame($expectedString, (string)$literal);
 
         $this->assertSame($expectedDigest, $literal->getDigest());
+
+        $literal->rewind();
+
+        foreach ($value as $item) {
+            $this->assertNotSame($item, $literal->current());
+
+            $this->assertEquals($item, $literal->current());
+
+            $literal->next();
+        }
     }
 
     public function basicsProvider(): array

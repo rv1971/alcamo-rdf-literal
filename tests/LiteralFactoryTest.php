@@ -118,7 +118,7 @@ class LiteralFactoryTest extends TestCase
                 null,
                 null,
                 DateTimeLiteral::class,
-                new \DateTime('2026-02-03T11:04:42+01:00'),
+                new \DateTimeImmutable('2026-02-03T11:04:42+01:00'),
                 self::XSD_NS . 'dateTime',
                 '2026-02-03T11:04:42+01:00',
                 '2026-02-03T11:04:42+01:00'
@@ -128,7 +128,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'dateTime',
                 null,
                 DateTimeLiteral::class,
-                new \DateTime('2026-02-04T16:05:12Z'),
+                new \DateTimeImmutable('2026-02-04T16:05:12Z'),
                 self::XSD_NS . 'dateTime',
                 '2026-02-04T16:05:12+00:00',
                 '2026-02-04T16:05:12+00:00'
@@ -138,7 +138,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'date',
                 null,
                 DateLiteral::class,
-                (new \DateTime())->setDate(-63, 11, 8),
+                (new \DateTimeImmutable())->setDate(-63, 11, 8),
                 self::XSD_NS . 'date',
                 '-0063-11-08',
                 '-0063-11-08'
@@ -148,7 +148,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'time',
                 null,
                 TimeLiteral::class,
-                new \DateTime('15:01:02'),
+                new \DateTimeImmutable('15:01:02'),
                 self::XSD_NS . 'time',
                 '15:01:02',
                 '15:01:02'
@@ -298,7 +298,7 @@ class LiteralFactoryTest extends TestCase
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
                 PositiveGYearLiteral::class,
-                new \DateTime('1913-10-11'),
+                new \DateTimeImmutable('1913-10-11'),
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '1913',
                 '1913'
@@ -308,7 +308,7 @@ class LiteralFactoryTest extends TestCase
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
                 PositiveGYearLiteral::class,
-                new \DateTime('0313-02-13'),
+                new \DateTimeImmutable('0313-02-13'),
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '0313',
                 '0313'
@@ -318,7 +318,7 @@ class LiteralFactoryTest extends TestCase
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
                 PositiveGYearLiteral::class,
-                new \DateTime('1918-02-24+01:00'),
+                new \DateTimeImmutable('1918-02-24+01:00'),
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '1918',
                 '1918'
@@ -328,7 +328,7 @@ class LiteralFactoryTest extends TestCase
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 null,
                 PositiveGYearLiteral::class,
-                new \DateTime('0856-02-04'),
+                new \DateTimeImmutable('0856-02-04'),
                 (string)PositiveGYearLiteral::getClassDefaultDatatypeUri(),
                 '0856',
                 '0856'
@@ -338,7 +338,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gYear',
                 null,
                 GYearLiteral::class,
-                (new \DateTime())->setDate(-753, 1, 1),
+                (new \DateTimeImmutable())->setDate(-753, 1, 1),
                 GYearLiteral::DEFAULT_DATATYPE_URI,
                 '-0753',
                 '-0753'
@@ -348,7 +348,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gYear',
                 null,
                 GYearLiteral::class,
-                (new \DateTime())->setDate(-753, 1, 1)
+                (new \DateTimeImmutable())->setDate(-753, 1, 1)
                     ->setTimeZone(new \DateTimeZone('Z')),
                 GYearLiteral::DEFAULT_DATATYPE_URI,
                 '-0753',
@@ -359,7 +359,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gYear',
                 null,
                 GYearLiteral::class,
-                (new \DateTime())->setDate(-753, 1, 1)
+                (new \DateTimeImmutable())->setDate(-753, 1, 1)
                     ->setTimeZone(new \DateTimeZone('-0200')),
                 GYearLiteral::DEFAULT_DATATYPE_URI,
                 '-0753',
@@ -480,7 +480,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gYear',
                 null,
                 GYearLiteral::class,
-                new \DateTime('1971'),
+                new \DateTimeImmutable('1971'),
                 self::XSD_NS . 'gYear',
                 '1971',
                 '1971'
@@ -500,7 +500,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gYearMonth',
                 null,
                 GYearMonthLiteral::class,
-                new \DateTime('1975-12'),
+                new \DateTimeImmutable('1975-12'),
                 self::XSD_NS . 'gYearMonth',
                 '1975-12',
                 '1975-12'
@@ -520,7 +520,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gMonth',
                 null,
                 GMonthLiteral::class,
-                new \DateTime("$year-07-$day"),
+                new \DateTimeImmutable("$year-07-$day"),
                 self::XSD_NS . 'gMonth',
                 '07',
                 '07'
@@ -530,7 +530,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gMonth',
                 null,
                 GMonthLiteral::class,
-                new \DateTime("$year-05-$day-07:00"),
+                new \DateTimeImmutable("$year-05-$day-07:00"),
                 self::XSD_NS . 'gMonth',
                 '05',
                 '05'
@@ -540,7 +540,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gMonthDay',
                 null,
                 GMonthDayLiteral::class,
-                new \DateTime("$year-12-08"),
+                new \DateTimeImmutable("$year-12-08"),
                 self::XSD_NS . 'gMonthDay',
                 '12-08',
                 '12-08'
@@ -550,7 +550,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gMonthDay',
                 null,
                 GMonthDayLiteral::class,
-                new \DateTime("$year-05-31+02:00"),
+                new \DateTimeImmutable("$year-05-31+02:00"),
                 self::XSD_NS . 'gMonthDay',
                 '05-31',
                 '05-31'
@@ -560,7 +560,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gDay',
                 null,
                 GDayLiteral::class,
-                new \DateTime("$year-$month-17"),
+                new \DateTimeImmutable("$year-$month-17"),
                 self::XSD_NS . 'gDay',
                 '17',
                 '17'
@@ -570,7 +570,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'gDay',
                 null,
                 GDayLiteral::class,
-                new \DateTime("$year-$month-17+01:00"),
+                new \DateTimeImmutable("$year-$month-17+01:00"),
                 self::XSD_NS . 'gDay',
                 '17',
                 '17'

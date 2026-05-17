@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF language literal
  *
+ * @invariant getValue() returns an alcamo::rdf_literal::Lang.
+ *
  * @date Last reviewed 2026-02-05
  */
 class LanguageLiteral extends AbstractLiteral

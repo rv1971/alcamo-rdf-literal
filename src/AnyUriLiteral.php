@@ -8,6 +8,8 @@ use Psr\Http\Message\UriInterface;
 /**
  * @brief RDF anyURI literal
  *
+ * @invariant getValue() returns a Psr::Http::Message::UriInterface.
+ *
  * @date Last reviewed 2026-02-18
  */
 class AnyUriLiteral extends AbstractLiteral

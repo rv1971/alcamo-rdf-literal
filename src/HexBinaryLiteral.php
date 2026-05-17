@@ -7,6 +7,8 @@ use alcamo\binary_data\BinaryString;
 /**
  * @brief RDF hexBinary literal
  *
+ * @invariant getValue() returns an alcamo::binary_data::BinaryString.
+ *
  * @date Last reviewed 2026-02-18
  */
 class HexBinaryLiteral extends AbstractLiteral
@@ -24,9 +26,14 @@ class HexBinaryLiteral extends AbstractLiteral
     {
         parent::__construct(
             $value instanceof BinaryString
-                ? $value
+                ? clone $value
                 : BinaryString::newFromHex($value),
             $datatypeUri
         );
+    }
+
+    public function __clone()
+    {
+        $this->value_ = clone $this->value_;
     }
 }

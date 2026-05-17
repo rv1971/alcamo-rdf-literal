@@ -24,21 +24,23 @@ class GMonthDayLiteral extends DateTimeLiteral
     public function __construct($value = null, $datatypeUri = null)
     {
         switch (true) {
-            case $value instanceof \DateTime:
+            case $value instanceof \DateTimeInterface:
                 parent::__construct($value, $datatypeUri);
                 break;
 
             case !isset($value) || $value === '':
-                parent::__construct(new \DateTime(), $datatypeUri);
+                parent::__construct(new \DateTimeImmutable(), $datatypeUri);
                 return;
 
             default:
                 /* Simply try parsing $value with timezone; if this fails, try
                  * without. */
-                $dateTime = \DateTime::createFromFormat('m-de', $value);
+                $dateTime =
+                    \DateTimeImmutable::createFromFormat('m-de', $value);
 
                 if ($dateTime === false) {
-                    $dateTime = \DateTime::createFromFormat('m-d', $value);
+                    $dateTime =
+                        \DateTimeImmutable::createFromFormat('m-d', $value);
                 }
 
                 parent::__construct($dateTime, $datatypeUri);

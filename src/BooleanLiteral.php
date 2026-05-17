@@ -7,6 +7,8 @@ use alcamo\exception\SyntaxError;
 /**
  * @brief RDF boolean literal
  *
+ * @invariant getValue() returns a bool.
+ *
  * @date Last reviewed 2026-04-17
  */
 class BooleanLiteral extends AbstractLiteral implements

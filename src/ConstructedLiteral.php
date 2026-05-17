@@ -70,7 +70,7 @@ class ConstructedLiteral extends AbstractLiteral implements
             }
 
             /* ReadonlyCollectionTrait accesses $data_. */
-            $this->data_[$key] = $literal;
+            $this->data_[$key] = clone $literal;
         }
 
         parent::__construct(null, $datatypeUri ?? static::DEFAULT_DATATYPE_URI);

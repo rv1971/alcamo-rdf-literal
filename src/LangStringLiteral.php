@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF language-tagged string
  *
+ * @invariant getValue() returns a string.
+ *
  * @date Last reviewed 2026-02-05
  */
 class LangStringLiteral extends AbstractLiteral
@@ -46,7 +48,6 @@ class LangStringLiteral extends AbstractLiteral
         return "\"$this->value_\"" .
             (isset($this->lang_) ? "@$this->lang_" : '');
     }
-
 
     /**
      * @copydoc alcamo::rdf_literal::LiteralInterface::equals()

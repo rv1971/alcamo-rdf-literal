@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF string literal
  *
+ * @invariant getValue() returns a string.
+ *
  * @date Last reviewed 2026-02-09
  */
 class StringLiteral extends AbstractLiteral

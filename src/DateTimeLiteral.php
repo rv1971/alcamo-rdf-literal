@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF datetime literal
  *
+ * @invariant getValue() returns a DateTimeImmutable.
+ *
  * @date Last reviewed 2026-02-05
  */
 class DateTimeLiteral extends AbstractLiteral
@@ -25,17 +27,22 @@ class DateTimeLiteral extends AbstractLiteral
     {
         /* PHP does not interpret negative dates according to
          * https://www.w3.org/TR/xmlschema-2/#date */
-        if (!($value instanceof \Datetime)) {
+        if (!($value instanceof \DateTimeInterface)) {
             if ((string)$value && ((string)$value)[0] == '-') {
                 $value = new \DateTime(substr($value, 1));
+
                 $value->setDate(
                     -$value->format('Y'),
                     $value->format('m'),
                     $value->format('d')
                 );
+
+                $value = \DateTimeImmutable::createFromMutable($value);
             } else {
-                $value = new \DateTime($value);
+                $value = new \DateTimeImmutable($value);
             }
+        } elseif (!($value instanceof \DateTimeImmutable)) {
+            $value = \DateTimeImmutable::createFromMutable($value);
         }
 
         parent::__construct($value, $datatypeUri);

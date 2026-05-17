@@ -51,8 +51,12 @@ abstract class AbstractLiteral implements LiteralInterface
      * @param $value in any appropriate PHP type.
      *
      * @param $datatypeUri Datatype IRI.
+     *
+     * This method is protected because each derived type must decide whether
+     * $value might need to be cloned. (If so, the dreived class also needs a
+     * __clone() method.)
      */
-    public function __construct($value = null, $datatypeUri = null)
+    protected function __construct($value = null, $datatypeUri = null)
     {
         /* Unwrap values wrapped into another literal class. This happens, for
          * instance, when OwlVersionInfo gets a LangStringLiteral (from an XML

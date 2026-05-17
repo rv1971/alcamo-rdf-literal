@@ -7,6 +7,8 @@ use alcamo\binary_data\BinaryString;
 /**
  * @brief RDF base64Binary literal
  *
+ * @invariant getValue() returns an alcamo::binary_data::BinaryString.
+ *
  * @date Last reviewed 2026-02-18
  */
 class Base64BinaryLiteral extends AbstractLiteral
@@ -24,10 +26,15 @@ class Base64BinaryLiteral extends AbstractLiteral
     {
         parent::__construct(
             $value instanceof BinaryString
-                ? $value
+                ? clone $value
                 : new BinaryString(base64_decode($value, true)),
             $datatypeUri
         );
+    }
+
+    public function __clone()
+    {
+        $this->value_ = clone $this->value_;
     }
 
     public function __toString(): string

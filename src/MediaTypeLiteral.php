@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF media type literal
  *
+ * @invariant getValue() returns an alcamo::rdf_literal::MediaType.
+ *
  * @date Last reviewed 2026-02-12
  */
 class MediaTypeLiteral extends AbstractLiteral
