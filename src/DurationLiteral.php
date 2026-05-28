@@ -34,4 +34,11 @@ class DurationLiteral extends AbstractLiteral
     {
         $this->value_ = clone $this->value_;
     }
+
+    public function getValue()
+    {
+        /* Since Duration is derived from DateInterval, $this->value_ is not
+         * immutable. To keep the literal immutable, always return a clone. */
+        return clone $this->value_;
+    }
 }

@@ -9,7 +9,8 @@ use Psr\Http\Message\UriInterface;
  *
  * @sa [RDF Literals](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#section-Graph-Literal)
  *
- * @invariant Implementations should be immutable.
+ * @invariant Implementations should be immutable and always return immutable
+ * objects in getValue().
  *
  * @date Last reviewed 2026-02-05
  */

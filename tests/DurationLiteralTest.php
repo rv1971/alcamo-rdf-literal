@@ -21,6 +21,9 @@ class DurationLiteralTest extends TestCase
 
         $this->assertNotSame($literal1->getValue(), $literal2->getValue());
 
+        /* Test that getValue() returns a clone. */
+        $literal2->getValue()->y = 20;
+
         $this->assertEquals($data, $literal2->getValue());
     }
 }
