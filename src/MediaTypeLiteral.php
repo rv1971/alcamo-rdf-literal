@@ -7,6 +7,8 @@ namespace alcamo\rdf_literal;
  *
  * @invariant getValue() returns an alcamo::rdf_literal::MediaType.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-12
  */
 class MediaTypeLiteral extends AbstractLiteral

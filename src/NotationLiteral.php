@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF notation literal
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-26
  */
 class NotationLiteral extends QNameLiteral

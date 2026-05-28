@@ -2,12 +2,14 @@
 
 namespace alcamo\rdf_literal;
 
-use alcamo\binary_data\BinaryString;
+use alcamo\binary_data\ImmutableBinaryString;
 
 /**
  * @brief RDF hexBinary literal
  *
- * @invariant getValue() returns an alcamo::binary_data::BinaryString.
+ * @invariant getValue() returns an alcamo::binary_data::ImmutableBinaryString.
+ *
+ * @invariant Immutable class.
  *
  * @date Last reviewed 2026-02-18
  */
@@ -25,9 +27,9 @@ class HexBinaryLiteral extends AbstractLiteral
     public function __construct($value = null, $datatypeUri = null)
     {
         parent::__construct(
-            $value instanceof BinaryString
+            $value instanceof ImmutableBinaryString
                 ? clone $value
-                : BinaryString::newFromHex($value),
+                : ImmutableBinaryString::newFromHex($value),
             $datatypeUri
         );
     }

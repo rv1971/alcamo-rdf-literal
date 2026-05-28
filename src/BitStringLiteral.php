@@ -9,6 +9,8 @@ use alcamo\exception\SyntaxError;
  *
  * A bit string is a string made of the digits 0 and 1.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-04-17
  */
 class BitStringLiteral extends DigitStringLiteral

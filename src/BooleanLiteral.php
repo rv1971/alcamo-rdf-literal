@@ -9,6 +9,8 @@ use alcamo\exception\SyntaxError;
  *
  * @invariant getValue() returns a bool.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-04-17
  */
 class BooleanLiteral extends AbstractLiteral implements

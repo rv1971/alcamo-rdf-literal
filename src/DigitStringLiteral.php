@@ -12,6 +12,8 @@ use alcamo\exception\SyntaxError;
  * zeros make a difference, i.e. the numeric string `007` is different from
  * `7`.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-04-17
  */
 class DigitStringLiteral extends FourBitCharStringLiteral

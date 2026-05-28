@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF double floating point number literal
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-26
  */
 class DoubleLiteral extends FloatLiteral

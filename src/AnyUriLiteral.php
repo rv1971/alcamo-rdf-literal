@@ -10,6 +10,8 @@ use Psr\Http\Message\UriInterface;
  *
  * @invariant getValue() returns a Psr::Http::Message::UriInterface.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-18
  */
 class AnyUriLiteral extends AbstractLiteral

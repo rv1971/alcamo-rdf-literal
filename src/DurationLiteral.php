@@ -9,6 +9,8 @@ use alcamo\time\Duration;
  *
  * @invariant getValue() returns an alcamo::time::Duration.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-05
  */
 class DurationLiteral extends AbstractLiteral

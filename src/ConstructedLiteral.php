@@ -17,6 +17,8 @@ use alcamo\exception\InvalidType;
  * literals: an artificial datatype URI is used that does not resolve to an
  * XML Schema type.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-04-21
  */
 class ConstructedLiteral extends AbstractLiteral implements

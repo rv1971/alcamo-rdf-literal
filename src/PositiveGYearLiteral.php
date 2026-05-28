@@ -7,6 +7,8 @@ use alcamo\exception\OutOfRange;
 /**
  * @brief RDF positive gregorian year literal
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-22
  */
 class PositiveGYearLiteral extends GYearLiteral

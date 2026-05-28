@@ -10,6 +10,8 @@ use alcamo\exception\SyntaxError;
  * A four-bit string literal is a string made of digits and the six ASCII
  * characters following `9`, namely `:;<=>?`.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-04-17
  */
 class FourBitCharStringLiteral extends StringLiteral

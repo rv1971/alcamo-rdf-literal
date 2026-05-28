@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF time literal
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-05
  */
 class TimeLiteral extends DateTimeLiteral

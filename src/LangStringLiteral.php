@@ -7,6 +7,8 @@ namespace alcamo\rdf_literal;
  *
  * @invariant getValue() returns a string.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-05
  */
 class LangStringLiteral extends AbstractLiteral

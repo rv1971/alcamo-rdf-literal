@@ -2,7 +2,7 @@
 
 namespace alcamo\rdf_literal;
 
-use alcamo\binary_data\BinaryString;
+use alcamo\binary_data\ImmutableBinaryString;
 use alcamo\time\Duration;
 use alcamo\uri\Uri;
 use PHPUnit\Framework\TestCase;
@@ -580,7 +580,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'hexBinary',
                 null,
                 HexBinaryLiteral::class,
-                BinaryString::newFromHex('ab12cd'),
+                ImmutableBinaryString::newFromHex('ab12cd'),
                 self::XSD_NS . 'hexBinary',
                 'AB12CD',
                 'AB12CD'
@@ -590,7 +590,7 @@ class LiteralFactoryTest extends TestCase
                 self::XSD_NS . 'base64Binary',
                 null,
                 Base64BinaryLiteral::class,
-                BinaryString::newFromHex('1234567abc'),
+                ImmutableBinaryString::newFromHex('1234567abc'),
                 self::XSD_NS . 'base64Binary',
                 'EjRWerw=',
                 'EjRWerw='

@@ -2,14 +2,14 @@
 
 namespace alcamo\rdf_literal;
 
-use alcamo\binary_data\BinaryString;
+use alcamo\binary_data\ImmutableBinaryString;
 use PHPUnit\Framework\TestCase;
 
 class Base64BinaryLiteralTest extends TestCase
 {
     public function testConstruct(): void
     {
-        $data = new BinaryString('Foo');
+        $data = new ImmutableBinaryString('Foo');
 
         $literal1 = new Base64BinaryLiteral($data);
 

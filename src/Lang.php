@@ -10,8 +10,6 @@ namespace alcamo\rdf_literal;
  * @invariant Immutable class.
  *
  * @date Last reviewed 2025-10-16
- *
- * @date Last reviewed 2025-10-16
  */
 class Lang
 {

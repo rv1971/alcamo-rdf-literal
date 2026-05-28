@@ -7,6 +7,8 @@ namespace alcamo\rdf_literal;
  *
  * @invariant getValue() returns an int or a float.
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-26
  */
 class DecimalLiteral extends AbstractLiteral implements

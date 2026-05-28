@@ -8,10 +8,9 @@ use Psr\Http\Message\UriInterface;
 /**
  * @brief RDF literal
  *
- * @attention Cloning is shallow, hence $value_ (if it is an object) is cloned
- * by reference. Applications should not modify the result of getValue(),
- * unless it is desired that the modification applies to all literals that
- * reference it.
+ * @attention Cloning is shallow, hence derived classes must ensure that
+ * $value_, if an oject, is either immutable or has an appropriate __clone()
+ * method.
  *
  * @date Last reviewed 2026-02-05
  */

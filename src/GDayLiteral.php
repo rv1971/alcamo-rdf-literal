@@ -5,6 +5,8 @@ namespace alcamo\rdf_literal;
 /**
  * @brief RDF gregorian day literal
  *
+ * @invariant Immutable class.
+ *
  * @date Last reviewed 2026-02-18
  */
 class GDayLiteral extends DateTimeLiteral implements ConvertibleToIntInterface
