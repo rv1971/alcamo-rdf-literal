@@ -17,34 +17,24 @@ use alcamo\exception\InvalidType;
  * literals: an artificial datatype URI is used that does not resolve to an
  * XML Schema type.
  *
+ * The only possible primitive datatypes for a constructed literal are
+ * `string`, `base64Binary` and `hexBinary` because they are the only
+ * primitive datatypes whose value spaces have a concatenation
+ * operation. `base64Binary` has the drawback that concatenation in the value
+ * space and concatenation in the lexical space lead to different
+ * results. Therefore, derived classes are provided for `string` and
+ * `hexBinary` only.
+ *
  * @invariant Immutable class.
  *
  * @date Last reviewed 2026-04-21
  */
-class ConstructedLiteral extends AbstractLiteral implements
+abstract class AbstractConstructedLiteral extends AbstractLiteral implements
     \Countable,
     \ArrayAccess,
     \Iterator
 {
     use ReadonlyCollectionTrait;
-
-    /**
-     * @copydoc alcamo::rdf_literal::AbstractLiteral::PRIMITIVE_DATATYPE_URI
-     *
-     * The only possible primitive datatypes for a constructed literal are
-     * `string`, `base64Binary` and `hexBinary` because they are the only
-     * primitive datatypes whose value spaces have a concatenation operation.
-     *
-     * `string` is the simplest choice because the concatenation of the
-     * lexical representations of any literals, with or without separators, is
-     * always a valid lexical representation of a `string` literal. Thus, an
-     * implementation of the __toString() method is trivial. For a primitive
-     * datatype of 'hexBinary', it would be more complex, and for
-     * `base64Binary`even more.
-     */
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'string';
-
-    public const DEFAULT_DATATYPE_URI = self::ALCAMO_RDF_NS . 'Constructed';
 
     /// Separator used in __toString() and getDigest()
     public const SEPARATOR = '|';
@@ -81,25 +71,12 @@ class ConstructedLiteral extends AbstractLiteral implements
         $this->value_ =& $this->data_;
     }
 
-
-    /**
-     * @copybrief alcamo::rdf_literal::LiteralInterface::__toString
-     *
-     * @return Concatenation of the return values of the __toString() methods
-     * of each item, separated by
-     * alcamo::rdf_literal::ConstructedLiteral::SEPARATOR.
-     */
-    public function __toString(): string
-    {
-        return implode(static::SEPARATOR, $this->value_);
-    }
-
     /**
      * @copybrief alcamo::rdf_literal::LiteralInterface::getDigest()
      *
      * @return Concatenation of the return values of the getDigest() methods
      * of each item, separated by
-     * alcamo::rdf_literal::ConstructedLiteral::SEPARATOR.
+     * alcamo::rdf_literal::ConstructedStringLiteral::SEPARATOR.
      */
     public function getDigest(): string
     {

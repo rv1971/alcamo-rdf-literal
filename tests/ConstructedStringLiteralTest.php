@@ -5,14 +5,14 @@ namespace alcamo\rdf_literal;
 use alcamo\exception\InvalidType;
 use PHPUnit\Framework\TestCase;
 
-class ConstructedLiteralTest extends TestCase
+class ConstructedStringLiteralTest extends TestCase
 {
     /**
      * @dataProvider basicsProvider
      */
     public function testBasics($value, $expectedString, $expectedDigest): void
     {
-        $literal = new ConstructedLiteral($value);
+        $literal = new ConstructedStringLiteral($value);
 
         $this->assertSame(count($value), count($literal));
 
@@ -60,13 +60,13 @@ class ConstructedLiteralTest extends TestCase
     {
         return [
             [
-                new ConstructedLiteral(
+                new ConstructedStringLiteral(
                     [
                         new IntegerLiteral(42),
                         new DigitStringLiteral('01234')
                     ]
                 ),
-                new ConstructedLiteral(
+                new ConstructedStringLiteral(
                     [
                         new NonNegativeIntegerLiteral(42),
                         new StringLiteral('01234')
@@ -75,8 +75,8 @@ class ConstructedLiteralTest extends TestCase
                 true
             ],
             [
-                new ConstructedLiteral([ new IntegerLiteral(42) ]),
-                new ConstructedLiteral(
+                new ConstructedStringLiteral([ new IntegerLiteral(42) ]),
+                new ConstructedStringLiteral(
                     [
                         new IntegerLiteral(42),
                         new StringLiteral('foo')
@@ -85,13 +85,13 @@ class ConstructedLiteralTest extends TestCase
                 false
             ],
             [
-                new ConstructedLiteral(
+                new ConstructedStringLiteral(
                     [
                         new IntegerLiteral(42),
                         new StringLiteral('foo')
                     ]
                 ),
-                new ConstructedLiteral(
+                new ConstructedStringLiteral(
                     [
                         new IntegerLiteral(42),
                         new StringLiteral('bar')
@@ -110,6 +110,6 @@ class ConstructedLiteralTest extends TestCase
                 . '"alcamo\rdf_literal\LiteralInterface"'
         );
 
-        new ConstructedLiteral([ new IntegerLiteral(0), 'foo' ]);
+        new ConstructedStringLiteral([ new IntegerLiteral(0), 'foo' ]);
     }
 }
