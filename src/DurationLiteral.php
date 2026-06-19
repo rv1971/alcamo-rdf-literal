@@ -43,4 +43,10 @@ class DurationLiteral extends AbstractLiteral
          * immutable. To keep the literal immutable, always return a clone. */
         return clone $this->value_;
     }
+
+    public function equals(LiteralInterface $literal): bool
+    {
+        return $literal::PRIMITIVE_DATATYPE_URI == $this::PRIMITIVE_DATATYPE_URI
+            && json_encode($literal->value_) == json_encode($this->value_);
+    }
 }
