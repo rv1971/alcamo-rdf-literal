@@ -18,5 +18,9 @@ interface LiteralFactoryInterface extends NamespaceConstantsInterface
      * type is decided based on it, otherwise it is based on the PHP type
      * or class of $value.
      */
-    public function create($value, $datatypeUri = null): LiteralInterface;
+    public function create(
+        $value,
+        $datatypeUri = null,
+        $lang = null
+    ): LiteralInterface;
 }
