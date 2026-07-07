@@ -19,11 +19,17 @@ interface LiteralInterface extends
     LiteralOrNodeInterface,
     NamespaceConstantsInterface
 {
+    /**
+     * @brief Default datatype URI for objects of the given class
+     *
+     * A class supports at least all datatypes derived from the default one.
+     */
     public static function getClassDefaultDatatypeUri(): UriInterface;
 
     /// Value as an appropriate PHP type, not necessarily stringable
     public function getValue();
 
+    /// URI representing the datatype of the present object
     public function getDatatypeUri(): UriInterface;
 
     /// Language, if available
@@ -31,8 +37,6 @@ interface LiteralInterface extends
 
     /// String representation of value
     public function __toString(): string;
-
-    public function getDigest(): string;
 
     /**
      * @brief Whether $this and $literal are considered equal

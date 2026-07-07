@@ -18,7 +18,7 @@ class MediaTypeLiteral extends AbstractLiteral
     /*
      * Sadly, `xh11d:ContentType` defined in
      * https://www.w3.org/MarkUp/SCHEMA/xhtml-datatypes-1.xsd cannot be used
-     * as a type here because it has no ID and therefore cannot be reference
+     * as a type here because it has no ID and therefore cannot be referenced
      * via a simple URI.
      */
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;

@@ -12,9 +12,9 @@ interface HavingDigestInterface
     /**
      * @brief Provide a human-readable summary of the object content
      *
-     * The return value should be suitable as an array key for that object,
-     * i.e. two objects of the same type that are considered different and
-     * might appear together in an array should produce different digests.
+     * The return value should be suitable as an array key for that object, so
+     * that two objects of the same type that are considered different produce
+     * different digests and hence can appear together in an array.
      *
      * A call of __toString() (if available) may be a suitable implementation
      * in many but not all cases, because the object may have properties which

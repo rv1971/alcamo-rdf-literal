@@ -8,9 +8,8 @@ use Psr\Http\Message\UriInterface;
 /**
  * @brief RDF literal
  *
- * @attention Cloning is shallow, hence derived classes must ensure that
- * $value_, if an oject, is either immutable or has an appropriate __clone()
- * method.
+ * @attention Derived classes must ensure that $value_, if an oject, is
+ * either immutable or has an appropriate __clone() method.
  *
  * @date Last reviewed 2026-02-05
  */
@@ -30,7 +29,7 @@ abstract class AbstractLiteral implements LiteralInterface
     /**
      * @brief URI of default datatype
      *
-     * MAY be defined in derived classes.
+     * MUST be defined in derived classes.
      */
     public const DEFAULT_DATATYPE_URI = null;
 
@@ -49,17 +48,17 @@ abstract class AbstractLiteral implements LiteralInterface
     /**
      * @param $value in any appropriate PHP type.
      *
-     * @param $datatypeUri Datatype IRI.
+     * @param $datatypeUri Datatype IRI. [default getClassDefaultDatatypeUri()]
      *
      * This method is protected because each derived type must decide whether
-     * $value might need to be cloned. (If so, the dreived class also needs a
+     * $value might need to be cloned. (If so, the derived class also needs a
      * __clone() method.)
      */
     protected function __construct($value = null, $datatypeUri = null)
     {
         /* Unwrap values wrapped into another literal class. This happens, for
-         * instance, when OwlVersionInfo gets a LangStringLiteral (from an XML
-         * attribute in a place where a language is defined). */
+         * instance, when OwlVersionInfo gets a LangStringLiteral (e.g. from
+         * an XML attribute in a place where a language is defined). */
         $this->value_ =
             $value instanceof LiteralInterface ? $value->getValue() : $value;
 
@@ -97,7 +96,8 @@ abstract class AbstractLiteral implements LiteralInterface
 
     public function getDigest(): string
     {
-        /* This calls __toString(). */
+        /* This calls __toString(), which may return sth different from
+         * $value_. */
         return $this;
     }
 

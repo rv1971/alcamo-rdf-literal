@@ -44,8 +44,8 @@ language tag.
 Among others, this allows to:
 * Create values of various types from strings, governed by an XSD
   datatype URI.
-* Add a __toString() function to values which are not stringable.
-* Add a custom __toString() function which differs from the default
+* Add a `__toString()` function to values which are not stringable by nature.
+* Add a custom `__toString()` function which differs from the default
   representation of a value.
 * Distinguish values that may be represented the same way in PHP but
   have different meanings.
