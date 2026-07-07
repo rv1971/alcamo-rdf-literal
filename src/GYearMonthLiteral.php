@@ -11,7 +11,7 @@ namespace alcamo\rdf_literal;
  */
 class GYearMonthLiteral extends DateTimeLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'gYearMonth';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#gYearMonth';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

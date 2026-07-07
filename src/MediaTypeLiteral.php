@@ -13,7 +13,7 @@ namespace alcamo\rdf_literal;
  */
 class MediaTypeLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'string';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#string';
 
     /*
      * Sadly, `xh11d:ContentType` defined in

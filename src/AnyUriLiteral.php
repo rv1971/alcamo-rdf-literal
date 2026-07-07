@@ -16,7 +16,7 @@ use Psr\Http\Message\UriInterface;
  */
 class AnyUriLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'anyURI';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#anyURI';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

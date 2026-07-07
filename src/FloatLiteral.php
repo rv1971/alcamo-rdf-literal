@@ -13,7 +13,7 @@ namespace alcamo\rdf_literal;
  */
 class FloatLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'float';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#float';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

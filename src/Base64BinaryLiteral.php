@@ -15,7 +15,7 @@ use alcamo\binary_data\ImmutableBinaryString;
  */
 class Base64BinaryLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'base64Binary';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#base64Binary';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

@@ -57,17 +57,17 @@ class LiteralFactory implements LiteralFactoryInterface
      * because StringLiteral is the fallback literal type anyway.
      */
     public const DATATYPE_URI_TO_CLASS = [
-        self::XSD_NS . 'byte'               => IntegerLiteral::class,
-        self::XSD_NS . 'int'                => IntegerLiteral::class,
-        self::XSD_NS . 'long'               => IntegerLiteral::class,
-        self::XSD_NS . 'negativeInteger'    => IntegerLiteral::class,
-        self::XSD_NS . 'nonPositiveInteger' => IntegerLiteral::class,
-        self::XSD_NS . 'positiveInteger'    => NonNegativeIntegerLiteral::class,
-        self::XSD_NS . 'short'              => IntegerLiteral::class,
-        self::XSD_NS . 'unsignedByte'       => NonNegativeIntegerLiteral::class,
-        self::XSD_NS . 'unsignedInt'        => NonNegativeIntegerLiteral::class,
-        self::XSD_NS . 'unsignedLong'       => NonNegativeIntegerLiteral::class,
-        self::XSD_NS . 'unsignedShort'      => NonNegativeIntegerLiteral::class
+        self::XSD_NS . '#byte'               => IntegerLiteral::class,
+        self::XSD_NS . '#int'                => IntegerLiteral::class,
+        self::XSD_NS . '#long'               => IntegerLiteral::class,
+        self::XSD_NS . '#negativeInteger'    => IntegerLiteral::class,
+        self::XSD_NS . '#nonPositiveInteger' => IntegerLiteral::class,
+        self::XSD_NS . '#positiveInteger'    => NonNegativeIntegerLiteral::class,
+        self::XSD_NS . '#short'              => IntegerLiteral::class,
+        self::XSD_NS . '#unsignedByte'       => NonNegativeIntegerLiteral::class,
+        self::XSD_NS . '#unsignedInt'        => NonNegativeIntegerLiteral::class,
+        self::XSD_NS . '#unsignedLong'       => NonNegativeIntegerLiteral::class,
+        self::XSD_NS . '#unsignedShort'      => NonNegativeIntegerLiteral::class
     ];
 
     public static function getDatatypeUriToClass(): array

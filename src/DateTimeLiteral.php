@@ -13,7 +13,7 @@ namespace alcamo\rdf_literal;
  */
 class DateTimeLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'dateTime';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#dateTime';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

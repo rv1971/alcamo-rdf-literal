@@ -15,7 +15,7 @@ use alcamo\time\Duration;
  */
 class DurationLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'duration';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#duration';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

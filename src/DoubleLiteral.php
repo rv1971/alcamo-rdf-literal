@@ -11,7 +11,7 @@ namespace alcamo\rdf_literal;
  */
 class DoubleLiteral extends FloatLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'double';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#double';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 }

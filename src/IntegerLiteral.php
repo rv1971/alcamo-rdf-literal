@@ -13,7 +13,7 @@ namespace alcamo\rdf_literal;
  */
 class IntegerLiteral extends DecimalLiteral
 {
-    public const DEFAULT_DATATYPE_URI = self::XSD_NS . 'integer';
+    public const DEFAULT_DATATYPE_URI = self::XSD_NS . '#integer';
 
     /**
      * @param $value int|string Integer or integer string.

@@ -11,7 +11,7 @@ namespace alcamo\rdf_literal;
  */
 class GDayLiteral extends DateTimeLiteral implements ConvertibleToIntInterface
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'gDay';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#gDay';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

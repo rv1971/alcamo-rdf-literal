@@ -15,7 +15,7 @@ use alcamo\binary_data\ImmutableBinaryString;
  */
 class ConstructedHexBinaryLiteral extends AbstractConstructedLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'hexBinary';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#hexBinary';
 
     public const DEFAULT_DATATYPE_URI =
         self::ALCAMO_RDF_NS . 'ConstructedHexBinary';

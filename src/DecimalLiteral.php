@@ -14,7 +14,7 @@ namespace alcamo\rdf_literal;
 class DecimalLiteral extends AbstractLiteral implements
     ConvertibleToIntInterface
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'decimal';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#decimal';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

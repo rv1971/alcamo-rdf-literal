@@ -11,7 +11,7 @@ namespace alcamo\rdf_literal;
  */
 class GMonthDayLiteral extends DateTimeLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'gMonthDay';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#gMonthDay';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

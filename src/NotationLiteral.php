@@ -11,7 +11,7 @@ namespace alcamo\rdf_literal;
  */
 class NotationLiteral extends QNameLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'NOTATION';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#NOTATION';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 }

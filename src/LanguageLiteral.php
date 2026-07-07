@@ -13,9 +13,9 @@ namespace alcamo\rdf_literal;
  */
 class LanguageLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'string';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#string';
 
-    public const DEFAULT_DATATYPE_URI = self::XSD_NS . 'language';
+    public const DEFAULT_DATATYPE_URI = self::XSD_NS . '#language';
 
     /*
      * @param $value Lang|string Lang or language string.

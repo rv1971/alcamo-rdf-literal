@@ -13,7 +13,7 @@ use alcamo\exception\OutOfRange;
  */
 class NonNegativeIntegerLiteral extends IntegerLiteral
 {
-    public const DEFAULT_DATATYPE_URI = self::XSD_NS . 'nonNegativeInteger';
+    public const DEFAULT_DATATYPE_URI = self::XSD_NS . '#nonNegativeInteger';
 
     /**
      * @param $value int|string nonnegative Integer or integer string.

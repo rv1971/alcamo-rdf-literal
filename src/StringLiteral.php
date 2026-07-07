@@ -13,7 +13,7 @@ namespace alcamo\rdf_literal;
  */
 class StringLiteral extends AbstractLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'string';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#string';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

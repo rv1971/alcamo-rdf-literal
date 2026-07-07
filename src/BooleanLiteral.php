@@ -16,7 +16,7 @@ use alcamo\exception\SyntaxError;
 class BooleanLiteral extends AbstractLiteral implements
     ConvertibleToIntInterface
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'boolean';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#boolean';
 
     public const DEFAULT_DATATYPE_URI = self::PRIMITIVE_DATATYPE_URI;
 

@@ -20,7 +20,7 @@ namespace alcamo\rdf_literal;
  */
 class ConstructedStringLiteral extends AbstractConstructedLiteral
 {
-    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . 'string';
+    public const PRIMITIVE_DATATYPE_URI = self::XSD_NS . '#string';
 
     public const DEFAULT_DATATYPE_URI =
         self::ALCAMO_RDF_NS . 'ConstructedString';
