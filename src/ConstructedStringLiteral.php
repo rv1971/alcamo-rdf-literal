@@ -25,6 +25,8 @@ class ConstructedStringLiteral extends AbstractConstructedLiteral
     public const DEFAULT_DATATYPE_URI =
         self::ALCAMO_RDF_NS . 'ConstructedString';
 
+    public const SEPARATOR = '|';
+
     /**
      * @copybrief alcamo::rdf_literal::LiteralInterface::__toString
      *

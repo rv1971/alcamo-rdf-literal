@@ -37,7 +37,7 @@ abstract class AbstractConstructedLiteral extends AbstractLiteral implements
     use ReadonlyCollectionTrait;
 
     /// Separator used in __toString() and getDigest()
-    public const SEPARATOR = '|';
+    public const SEPARATOR = null;
 
     /**
      * @param $value Iterable of alcamo::rdf_literal::LiteralInterface objects.

@@ -41,7 +41,7 @@ class ConstructedHexBinaryLiteralTest extends TestCase
                     new HexBinaryLiteral('abcd'),
                     new Base64BinaryLiteral('Zm9v')
                 ],
-                '6369616F7C7C34327CABCD7C666F6F'
+                '6369616FFFFF3432FFABCDFF666F6F'
             ]
         ];
     }

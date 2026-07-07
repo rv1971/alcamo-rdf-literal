@@ -20,6 +20,8 @@ class ConstructedHexBinaryLiteral extends AbstractConstructedLiteral
     public const DEFAULT_DATATYPE_URI =
         self::ALCAMO_RDF_NS . 'ConstructedHexBinary';
 
+    public const SEPARATOR = "\xFF";
+
     /**
      * @copybrief alcamo::rdf_literal::LiteralInterface::__toString
      *
