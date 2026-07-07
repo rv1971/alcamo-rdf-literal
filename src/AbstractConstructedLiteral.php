@@ -65,9 +65,10 @@ abstract class AbstractConstructedLiteral extends AbstractLiteral implements
             $this->data_[$key] = clone $literal;
         }
 
-        parent::__construct(null, $datatypeUri ?? static::DEFAULT_DATATYPE_URI);
+        parent::__construct(null, $datatypeUri);
 
-        /* AbstractLiteral accesses $value_. */
+        /* AbstractLiteral accesses $value_ while ReadonlyCollectionTrait
+         * accesses $data_. */
         $this->value_ =& $this->data_;
     }
 
