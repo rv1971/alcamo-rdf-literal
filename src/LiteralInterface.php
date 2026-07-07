@@ -22,7 +22,7 @@ interface LiteralInterface extends
     /**
      * @brief Default datatype URI for objects of the given class
      *
-     * A class supports at least all datatypes derived from the default one.
+     * A class supports exactly all datatypes derived from the default one.
      */
     public static function getClassDefaultDatatypeUri(): UriInterface;
 
