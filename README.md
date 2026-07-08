@@ -51,3 +51,15 @@ Among others, this allows to:
   have different meanings.
 
 See the doxygen documentation for details.
+
+The literal classes in this package do not check whether the given
+datatype is actually supported by the class, i.e. derived from the
+class's default datatype. This is a deliberate design decision, on the
+one hand to obtain lightweight literal classes, on the other hand to
+avoid a bidirectional dependency between this package and
+[alcamo/dom](github.com/rv1971/alcamo-dom).
+
+The
+[alcamo/rdf-literal-workbench](https://github.com/rv1971/alcamo-rdf-literal-workbench)
+package is provided to create and validate literal objects based on
+knowledge of an XML Schema.
