@@ -7,10 +7,9 @@ use alcamo\exception\SyntaxError;
 /**
  * @brief RDF digit string literal
  *
- * A digit string is a string made of digits. It differs from a nonnegative
- * integer by the fact that it can be of arbitrary length and that leading
- * zeros make a difference, i.e. the numeric string `007` is different from
- * `7`.
+ * A digit string is a string made of decimal digits. It differs from a
+ * nonnegative integer by the fact that leading zeros make a difference,
+ * i.e. the digit string `007` is different from `7`.
  *
  * @invariant Immutable class.
  *

@@ -5,10 +5,12 @@ namespace alcamo\rdf_literal;
 use alcamo\exception\SyntaxError;
 
 /**
- * @brief RDF four-bit string literal
+ * @brief RDF four-bit character string literal
  *
- * A four-bit string literal is a string made of digits and the six ASCII
- * characters following `9`, namely `:;<=>?`.
+ * A four-bit character string literal is a string made of digits and the six
+ * ASCII characters following `9`, namely `:;<=>?`. It differs from a
+ * hexBinary literal by the fact that it may have an odd number of characters
+ * and it ises the characters `:;<=>?` instead of `ABCDEF`.
  *
  * @invariant Immutable class.
  *
