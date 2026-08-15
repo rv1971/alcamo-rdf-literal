@@ -20,7 +20,7 @@ class StringLiteral extends AbstractLiteral
     /**
      * @param $value stringable.
      *
-     * @param $datatypeUri Datatype IRI. [default `xsd:string`]
+     * @param $datatypeUri Datatype IRI. [default static::DEFAULT_DATATYPE_URI]
      */
     public function __construct($value = null, $datatypeUri = null)
     {

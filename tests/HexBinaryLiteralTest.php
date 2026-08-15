@@ -22,5 +22,10 @@ class HexBinaryLiteralTest extends TestCase
         $this->assertNotSame($literal1->getValue(), $literal2->getValue());
 
         $this->assertEquals($data, $literal2->getValue());
+
+        $this->assertEquals(
+            new ImmutableBinaryString(''),
+            (new HexBinaryLiteral())->getValue()
+        );
     }
 }

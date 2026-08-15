@@ -14,7 +14,7 @@ class ConstructedStringLiteralTest extends TestCase
     {
         $literal = new ConstructedStringLiteral($value);
 
-        $this->assertSame(count($value), count($literal));
+        $this->assertSame(count((array)$value), count($literal));
 
         $this->assertSame($expectedString, (string)$literal);
 
@@ -22,7 +22,7 @@ class ConstructedStringLiteralTest extends TestCase
 
         $literal->rewind();
 
-        foreach ($value as $item) {
+        foreach ((array)$value as $item) {
             $this->assertNotSame($item, $literal->current());
 
             $this->assertEquals($item, $literal->current());
@@ -34,6 +34,7 @@ class ConstructedStringLiteralTest extends TestCase
     public function basicsProvider(): array
     {
         return [
+            [ null, '', '' ],
             [ [], '', '' ],
             [
                 [

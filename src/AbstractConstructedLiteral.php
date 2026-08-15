@@ -49,7 +49,7 @@ abstract class AbstractConstructedLiteral extends AbstractLiteral implements
      */
     public function __construct(iterable $value = null, $datatypeUri = null)
     {
-        foreach ($value as $key => $literal) {
+        foreach ($value ?? [] as $key => $literal) {
             if (!($literal instanceof LiteralInterface)) {
                 /** @throw alcamo::exception::InvalidType if an item in $value
                  *  is not a LiteralInterface object. */

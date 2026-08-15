@@ -29,7 +29,7 @@ class HexBinaryLiteral extends AbstractLiteral
         parent::__construct(
             $value instanceof ImmutableBinaryString
                 ? clone $value
-                : ImmutableBinaryString::newFromHex($value),
+                : ImmutableBinaryString::newFromHex((string)$value),
             $datatypeUri
         );
     }

@@ -20,6 +20,7 @@ class BooleanLiteralTest extends TestCase
     public function constructProvider(): array
     {
         return [
+            [ null, false ],
             [ false, false ],
             [ true, true ],
             [ 0, false ],

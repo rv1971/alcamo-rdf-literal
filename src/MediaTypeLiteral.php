@@ -2,6 +2,8 @@
 
 namespace alcamo\rdf_literal;
 
+use alcamo\exception\InvalidType;
+
 /**
  * @brief RDF media type literal
  *
@@ -30,6 +32,13 @@ class MediaTypeLiteral extends AbstractLiteral
      */
     public function __construct($value, $datatypeUri = null)
     {
+        /** @throw alcamo::exception::InvalidType if $value is `null` or emtpy
+         *  since the empty string is not a valid media type. */
+        InvalidType::throwIfNullOrEmpty(
+            $value,
+            [ 'MediaType', '<nonempty-string>' ]
+        );
+
         parent::__construct(
             $value instanceof MediaType
                 ? $value

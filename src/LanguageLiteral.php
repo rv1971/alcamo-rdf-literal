@@ -2,6 +2,8 @@
 
 namespace alcamo\rdf_literal;
 
+use alcamo\exception\InvalidType;
+
 /**
  * @brief RDF language literal
  *
@@ -24,6 +26,13 @@ class LanguageLiteral extends AbstractLiteral
      */
     public function __construct($value, $datatypeUri = null)
     {
+        /** @throw alcamo::exception::InvalidType if $value is `null` or emtpy
+         *  since the empty string is not a valid language. */
+        InvalidType::throwIfNullOrEmpty(
+            $value,
+            [ 'Lang', '<nonempty-string>' ]
+        );
+
         parent::__construct(
             $value instanceof Lang ? $value : Lang::newFromString($value),
             $datatypeUri

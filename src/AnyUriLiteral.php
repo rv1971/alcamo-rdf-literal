@@ -2,6 +2,7 @@
 
 namespace alcamo\rdf_literal;
 
+use alcamo\exception\InvalidType;
 use alcamo\uri\Uri;
 use Psr\Http\Message\UriInterface;
 
@@ -27,6 +28,13 @@ class AnyUriLiteral extends AbstractLiteral
      */
     public function __construct($value, $datatypeUri = null)
     {
+        /** @throw alcamo::exception::InvalidType if $value is `null` or emtpy
+         *  since the empty string is not a valid URI. */
+        InvalidType::throwIfNullOrEmpty(
+            $value,
+            [ 'UriInterface', '<nonempty-string>' ]
+        );
+
         parent::__construct(
             $value instanceof UriInterface ? $value : new Uri($value),
             $datatypeUri
