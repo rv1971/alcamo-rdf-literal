@@ -9,7 +9,7 @@ use Psr\Http\Message\UriInterface;
  * @brief RDF literal of a custom type
  *
  * @note A class using this trait must define the constants
- * `DEFAULT_DATATYPE_LOCAL_NAME` and `XSD_FILENAME`.
+ * `DEFAULT_DATATYPE_LOCAL_NAME`, `DEFAULT_DATATYPE_XNAME` and `XSD_FILENAME`.
  *
  * @date Last reviewed 2026-04-17
  */
@@ -19,8 +19,8 @@ trait CustomTypeLiteralTrait
     {
         static $uris = [];
 
-        return $uris[static::DEFAULT_DATATYPE_LOCAL_NAME]
-        ?? ($uris[static::DEFAULT_DATATYPE_LOCAL_NAME]
+        return $uris[static::DEFAULT_DATATYPE_XNAME]
+        ?? ($uris[static::DEFAULT_DATATYPE_XNAME]
             = (new FileUriFactory())
             ->create(static::XSD_FILENAME)
             ->withFragment(static::DEFAULT_DATATYPE_LOCAL_NAME));
